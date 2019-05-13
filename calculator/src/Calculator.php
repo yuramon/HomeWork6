@@ -6,7 +6,10 @@ class Calculator
     protected $operation;
     protected $initOperation = [];
 
-
+    /**
+     * @param $operationChar
+     * @param OperatorInterface $operation
+     */
     public function addCommand($operationChar, OperatorInterface $operation)
     {
         $this->operation = $operation;
@@ -14,6 +17,9 @@ class Calculator
         $this->initOperation = array_merge($this->initOperation, $newArr);
     }
 
+    /**
+     * @return Exception|string|void
+     */
     public function compute()
     {
         $args = func_get_args();
@@ -21,12 +27,20 @@ class Calculator
         array_shift($args);
 
        foreach ($args as $number) {
-           $this -> result = $this->initOperation[$operatorChar]->run($number, $this->result);
+           if (array_key_exists($operatorChar, $this->initOperation) === false){
+               return $this->result = new Exception("There is no such operation");
+           }
+           return $this->result = $this->initOperation[$operatorChar]->run($number, $this->result);
        }
     }
+
+    /**
+     * @param $result
+     * @return mixed
+     */
     public function init($result)
     {
-        $this->result = $result;
+        return $this->result = $result;
     }
 
     /**
@@ -36,6 +50,4 @@ class Calculator
     {
         return $this->result;
     }
-
-
 }
