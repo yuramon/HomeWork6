@@ -7,7 +7,6 @@ require_once 'class/MultCommand.php';
 require_once 'class/DivCommand.php';
 require_once 'class/SquareCommand.php';
 
-
 $calc = new Calculator();
 $calc->addCommand('+',new SumCommand());
 $calc->addCommand('-', new SubCommand());

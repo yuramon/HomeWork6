@@ -3,15 +3,12 @@
 class Calculator
 {
     protected $result;
-
     protected $operation;
-
     protected $initOperation = [];
 
 
     public function addCommand($operationChar, OperatorInterface $operation)
     {
-
         $this->operation = $operation;
         $newArr = [$operationChar => $operation];
         $this->initOperation = array_merge($this->initOperation, $newArr);
