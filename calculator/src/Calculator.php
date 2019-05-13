@@ -25,13 +25,12 @@ class Calculator
         $args = func_get_args();
         $operatorChar = $args[0];
         array_shift($args);
-
-       foreach ($args as $number) {
-           if (array_key_exists($operatorChar, $this->initOperation) === false){
-               return $this->result = new Exception("There is no such operation");
-           }
-           return $this->result = $this->initOperation[$operatorChar]->run($number, $this->result);
-       }
+        foreach ($args as $number) {
+            if (array_key_exists($operatorChar, $this->initOperation) === false) {
+                return $this->result = new Exception("There is no such operation");
+            }
+            return $this->result = $this->initOperation[$operatorChar]->run($number, $this->result);
+        }
     }
 
     /**
