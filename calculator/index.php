@@ -13,13 +13,8 @@ $calc = (new Calculator())
     ->addCommand('^', new SquareCommand())
     ->addCommand('\\', new DivCommand());
 
-$calc->init(1)
+echo $calc->init(1)
     ->compute('+', 5)
+    ->compute('-', 2)
     ->getResult();
-/*$calc->compute('+', 5);
-$calc->compute('-', 3);
-$calc->compute('^',2);
-$calc->compute('\\', 3);*/
-
-echo $calc->getResult();
 
